@@ -17,12 +17,12 @@ namespace ContactsApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        List <Contact> contacts;
-        
+        List<Contact> contacts;
+
         public MainWindow()
         {
             InitializeComponent();
-            contacts = new List <Contact>();
+            contacts = new List<Contact>();
             ReadDatabase();
         }
 
@@ -52,18 +52,22 @@ namespace ContactsApp
 
         private void filterBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var filteredList = contacts.Where(c=>c.Name.ToLower().Contains(filterBox.Text.ToLower())).ToList();
+            var filteredList = contacts.Where(c => c.Name.ToLower().Contains(filterBox.Text.ToLower())).ToList();
             contactsList.ItemsSource = filteredList;
 
         }
 
         private void contactsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            //
+            // kiválasztott objektum 
+            Contact selectedContact = (Contact)contactsList.SelectedItem;
 
-
-
+            if (selectedContact != null)
+            {
+                ContactDetailsWindow contactDetailsWindow = new ContactDetailsWindow(selectedContact);
+                contactDetailsWindow.ShowDialog();
+                ReadDatabase();
+            }
         }
     }
 }
