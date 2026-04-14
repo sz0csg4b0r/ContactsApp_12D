@@ -59,6 +59,10 @@ namespace ContactsApp
 
         private void contactsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+            //
+
+
 
         }
     }
