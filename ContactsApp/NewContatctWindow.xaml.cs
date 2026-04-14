@@ -27,20 +27,6 @@ namespace ContactsApp
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            Contact contact = new Contact()
-            {
-                Name = nameTextBox.Text,
-                Email = emailTextBox.Text,
-                Phone = phoneTextBox.Text
-            };
-
-            using (SQLite.SQLiteConnection connection = new SQLite.SQLiteConnection(App.databasePath))
-            {
-                connection.CreateTable<Contact>();
-                connection.Insert(contact);
-            }
-            Close();
-
         }
     }
 }

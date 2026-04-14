@@ -34,14 +34,11 @@ namespace ContactsApp
                 connection.CreateTable<Contact>();
                 contacts = connection.Table<Contact>().ToList();
 
-
                 // WPF elem (listview) megkapja a contact list adatokat
                 if (contacts != null)
                 {
                     contactsList.ItemsSource = contacts;
                 }
-
-
             }
         }
 
